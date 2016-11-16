@@ -45,10 +45,11 @@ class Request:
 
 
 class Api:
-    def __init__(self, api_key, user_agent):
+    def __init__(self, api_key, user_agent, delay=1000):
         self.base_url = "http://www.giantbomb.com/api/"
         self.api_key = api_key
         self.user_agent = user_agent
+        self.delay = delay
 
     @staticmethod
     def verify_response(response):
@@ -71,7 +72,7 @@ class Api:
     def get(self, url, params={}):
         params['api_key'] = self.api_key
         params['format'] = 'json'
-        requester = Request(1000)
+        requester = Request(self.delay)
         response = requester.get(url, self.user_agent, params)
 
         Api.verify_response(response)
