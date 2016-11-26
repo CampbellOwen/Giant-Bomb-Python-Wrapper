@@ -1218,15 +1218,15 @@ class Review:
 
 class SearchResults:
     def __init__(self,
-                 games=None,
-                 franchises=None,
-                 characters=None,
-                 concepts=None,
-                 objects=None,
-                 locations=None,
-                 people=None,
-                 companies=None,
-                 videos=None):
+                 games=[],
+                 franchises=[],
+                 characters=[],
+                 concepts=[],
+                 objects=[],
+                 locations=[],
+                 people=[],
+                 companies=[],
+                 videos=[]):
 
         self.games = games
         self.franchises = franchises
