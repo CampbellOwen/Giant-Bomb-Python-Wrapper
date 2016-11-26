@@ -1070,3 +1070,102 @@ class Region:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Release:
+    def __init__(self,
+                 api_detail_url=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 deck=None,
+                 description=None,
+                 developers=None,
+                 expected_release_day=None,
+                 expected_release_month=None,
+                 expected_release_quarter=None,
+                 expected_release_year=None,
+                 game=None,
+                 game_rating=None,
+                 id_=None,
+                 image=None,
+                 images=None,
+                 maximum_players=None,
+                 minimum_players=None,
+                 name=None,
+                 platform=None,
+                 product_code_type=None,
+                 product_code_value=None,
+                 publishers=None,
+                 region=None,
+                 release_date=None,
+                 resolutions=None,
+                 singleplayer_features=None,
+                 sound_systems=None,
+                 site_detail_url=None,
+                 widescreen_support=None):
+        self.api_detail_url = api_detail_url
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.deck = deck
+        self.description = description
+        self.developers = developers
+        self.expected_release_day = expected_release_day
+        self.expected_release_month = expected_release_month
+        self.expected_release_quarter = expected_release_quarter
+        self.expected_release_year = expected_release_year
+        self.game = game
+        self.game_rating = game_rating
+        self.id = id_
+        self.image = image
+        self.images = images
+        self.maximum_players = maximum_players
+        self.minimum_players = minimum_players
+        self.name = name
+        self.platform = platform
+        self.product_code_type = product_code_type
+        self.product_code_value = product_code_value
+        self.publishers = publishers
+        self.region = region
+        self.release_date = release_date
+        self.resolutions = resolutions
+        self.singleplayer_features = singleplayer_features
+        self.sound_systems = sound_systems
+        self.site_detail_url = site_detail_url
+        self.widescreen_support = widescreen_support
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('developers', None),
+                   data.get('expected_release_day', None),
+                   data.get('expected_release_month', None),
+                   data.get('expected_release_quarter', None),
+                   data.get('expected_release_year', None),
+                   data.get('game', None),
+                   data.get('game_rating', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('images', None),
+                   data.get('maximum_players', None),
+                   data.get('minimum_players', None),
+                   data.get('name', None),
+                   data.get('platform', None),
+                   data.get('product_code_type', None),
+                   data.get('product_code_value', None),
+                   data.get('publishers', None),
+                   data.get('region', None),
+                   data.get('release_date', None),
+                   data.get('resolutions', None),
+                   data.get('singleplayer_features', None),
+                   data.get('sound_systems', None),
+                   data.get('site_detail_url', None),
+                   data.get('widescreen_support', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
