@@ -809,3 +809,84 @@ class Object:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Person:
+    def __init__(self,
+                 aliases=None,
+                 api_detail_url=None,
+                 birth_date=None,
+                 characters=None,
+                 concepts=None,
+                 country=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 death_date=None,
+                 deck=None,
+                 description=None,
+                 first_credited_game=None,
+                 franchises=None,
+                 games=None,
+                 gender=None,
+                 hometown=None,
+                 id_=None,
+                 image=None,
+                 locations=None,
+                 name=None,
+                 objects=None,
+                 people=None,
+                 site_detail_url=None):
+        self.aliases = aliases
+        self.api_detail_url = api_detail_url
+        self.birth_date = birth_date
+        self.characters = characters
+        self.concepts = concepts
+        self.country = country
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.death_date = death_date
+        self.deck = deck
+        self.description = description
+        self.first_credited_game = first_credited_game
+        self.franchises = franchises
+        self.games = games
+        self.gender = gender
+        self.hometown = hometown
+        self.id = id_
+        self.image = image
+        self.locations = locations
+        self.name = name
+        self.objects = objects
+        self.people = people
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('aliases', None),
+                   data.get('api_detail_url', None),
+                   data.get('birth_date', None),
+                   data.get('characters', None),
+                   data.get('concepts', None),
+                   data.get('country', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('death_date', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('first_credited_game', None),
+                   data.get('franchises', None),
+                   data.get('games', None),
+                   data.get('gender', None),
+                   data.get('hometown', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('locations', None),
+                   data.get('name', None),
+                   data.get('objects', None),
+                   data.get('people', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
