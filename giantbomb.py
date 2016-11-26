@@ -890,3 +890,99 @@ class Person:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Platform:
+    def __init__(self,
+                 abbreviation=None,
+                 api_detail_url=None,
+                 company=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 deck=None,
+                 description=None,
+                 id_=None,
+                 image=None,
+                 install_base=None,
+                 name=None,
+                 online_support=None,
+                 original_price=None,
+                 release_date=None,
+                 site_detail_url=None):
+        self.abbreviation = abbreviation
+        self.api_detail_url = api_detail_url
+        self.company = company
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.deck = deck
+        self.description = description
+        self.id = id_
+        self.image = image
+        self.install_base = install_base
+        self.name = name
+        self.online_support = online_support
+        self.original_price = original_price
+        self.release_date = release_date
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('abbreviation', None),
+                   data.get('api_detail_url', None),
+                   data.get('company', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('install_base', None),
+                   data.get('name', None),
+                   data.get('online_support', None),
+                   data.get('original_price', None),
+                   data.get('release_date', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
+
+
+class Promo:
+    def __init__(self,
+                 api_detail_url=None,
+                 date_added=None,
+                 deck=None,
+                 id_=None,
+                 image=None,
+                 link=None,
+                 name=None,
+                 resource_type=None,
+                 user=None):
+        self.api_detail_url = api_detail_url
+        self.date_added = date_added
+        self.deck = deck
+        self.id = id_
+        self.image = image
+        self.link = link
+        self.name = name
+        self.resource_type = resource_type
+        self.user = user
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('date_added', None),
+                   data.get('deck', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('link', None),
+                   data.get('name', None),
+                   data.get('resource_type', None),
+                   data.get('user', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
