@@ -1298,3 +1298,60 @@ class UserReview:
 
     def __repr__(self):
         return "{} Review by {}: {}".format(self.game, self.reviewer, self.score)
+
+
+class Video:
+    def __init__(self,
+                 api_detail_url=None,
+                 deck=None,
+                 hd_url=None,
+                 high_url=None,
+                 low_url=None,
+                 embed_player=None,
+                 id_=None,
+                 image=None,
+                 length_seconds=None,
+                 name=None,
+                 publish_date=None,
+                 site_detail_url=None,
+                 url=None,
+                 user=None,
+                 youtube_id=None):
+        self.api_detail_url = api_detail_url
+        self.deck = deck
+        self.hd_url = hd_url
+        self.high_url = high_url
+        self.low_url = low_url
+        self.embed_player = embed_player
+        self.id = id_
+        self.image = image
+        self.length_seconds = length_seconds
+        self.name = name
+        self.publish_date = publish_date
+        self.site_detail_url = site_detail_url
+        self.url = url
+        self.user = user
+        self.youtube_id = youtube_id
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('deck', None),
+                   data.get('hd_url', None),
+                   data.get('high_url', None),
+                   data.get('low_url', None),
+                   data.get('embed_player', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('length_seconds', None),
+                   data.get('name', None),
+                   data.get('publish_date', None),
+                   data.get('site_detail_url', None),
+                   data.get('url', None),
+                   data.get('user', None),
+                   data.get('youtube_id', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
