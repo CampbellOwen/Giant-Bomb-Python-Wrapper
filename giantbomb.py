@@ -203,10 +203,13 @@ class Api:
         res = self.get(url)['results']
         return VideoShow.from_dict(res)
 
-    def search(self, query, resources=[]):
+    def search(self, query, resources=[], field_list=[], limit=10, page=[]):
         url = self.base_url + 'search/'
         res = self.get(url, params={'query': query,
-                                    'resources': ",".join(resource for resource in resources)
+                                    'resources': ",".join(resource for resource in resources),
+                                    'field_list': ",".join(field for field in field_list),
+                                    'limit': str(limit),
+                                    'page': str(page)
                                     })['results']
         games = []
         franchises = []
