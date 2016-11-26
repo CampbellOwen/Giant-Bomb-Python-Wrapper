@@ -656,3 +656,156 @@ class GameRating:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Genre:
+    def __init__(self,
+                 api_detail_url=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 deck=None,
+                 description=None,
+                 id_=None,
+                 image=None,
+                 name=None,
+                 site_detail_url=None):
+        self.api_detail_url = api_detail_url
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.deck = deck
+        self.description = description
+        self.id = id_
+        self.image = image
+        self.name = name
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('name', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
+
+
+class Location:
+    def __init__(self,
+                 aliases=None,
+                 api_detail_url=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 deck=None,
+                 description=None,
+                 first_appeared_in_game=None,
+                 id_=None,
+                 image=None,
+                 name=None,
+                 site_detail_url=None):
+        self.aliases = aliases
+        self.api_detail_url = api_detail_url
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.deck = deck
+        self.description = description
+        self.first_appeared_in_game = first_appeared_in_game
+        self.id = id_
+        self.image = image
+        self.name = name
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('aliases', None),
+                   data.get('api_detail_url', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('first_appeared_in_game', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('name', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
+
+
+class Object:
+    def __init__(self,
+                 aliases=None,
+                 api_detail_url=None,
+                 characters=None,
+                 companies=None,
+                 concepts=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 deck=None,
+                 description=None,
+                 first_appeared_in_game=None,
+                 franchises=None,
+                 games=None,
+                 id_=None,
+                 image=None,
+                 locations=None,
+                 name=None,
+                 objects=None,
+                 people=None,
+                 site_detail_url=None):
+        self.aliases = aliases
+        self.api_detail_url = api_detail_url
+        self.characters = characters
+        self.companies = companies
+        self.concepts = concepts
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.deck = deck
+        self.description = description
+        self.first_appeared_in_game = first_appeared_in_game
+        self.franchises = franchises
+        self.games = games
+        self.id = id_
+        self.image = image
+        self.locations = locations
+        self.name = name
+        self.objects = objects
+        self.people = people
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('aliases', None),
+                   data.get('api_detail_url', None),
+                   data.get('characters', None),
+                   data.get('companies', None),
+                   data.get('concepts', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('first_appeared_in_game', None),
+                   data.get('franchises', None),
+                   data.get('games', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('locations', None),
+                   data.get('name', None),
+                   data.get('objects', None),
+                   data.get('people', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
