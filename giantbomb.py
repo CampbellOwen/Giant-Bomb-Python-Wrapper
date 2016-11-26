@@ -1216,6 +1216,55 @@ class Review:
         return "{} Review by {}: {}".format(self.game, self.reviewer, self.score)
 
 
+class SearchResults:
+    def __init__(self,
+                 games=None,
+                 franchises=None,
+                 characters=None,
+                 concepts=None,
+                 objects=None,
+                 locations=None,
+                 people=None,
+                 companies=None,
+                 videos=None):
+
+        self.games = games
+        self.franchises = franchises
+        self.characters = characters
+        self.concepts = concepts
+        self.objects = objects
+        self.locations = locations
+        self.people = people
+        self.companies = companies
+        self.videos = videos
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('games', None),
+                   data.get('franchises', None),
+                   data.get('characters', None),
+                   data.get('concepts', None),
+                   data.get('objects', None),
+                   data.get('locations', None),
+                   data.get('people', None),
+                   data.get('companies', None),
+                   data.get('videos', None))
+
+    def __repr__(self):
+        return "Games: {}, Franchises: {}, Characters: {}, Concepts: {}, " \
+               "Objects: {}, Locations: {}, People: {}, Companies: {}, Videos: {}".format(len(self.games),
+                                                                                          len(self.franchises),
+                                                                                          len(self.characters),
+                                                                                          len(self.concepts),
+                                                                                          len(self.objects),
+                                                                                          len(self.locations),
+                                                                                          len(self.people),
+                                                                                          len(self.companies),
+                                                                                          len(self.videos))
+
+
 class Theme:
     def __init__(self,
                  api_detail_url=None,
