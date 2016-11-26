@@ -25,11 +25,11 @@ class Request:
             while self.last_time is not None and (self.curr_time() - self.last_time) < self.delay:
                 pass
             self.last_time = self.curr_time()
-            res = requests.get(url, params=params, headers={"user-agent": user_agent})
+            res = requests.get(url, params=params, headers={'user-agent': user_agent})
             try:
                 res_json = res.json()
             except ValueError:
-                raise ApiError("URL provided returned invalid results:\nurl: {}\nparams: {}".format(url, params))
+                raise ApiError('URL provided returned invalid results:\nurl: {}\nparams: {}'.format(url, params))
             return res_json
 
     instance = None
@@ -46,7 +46,7 @@ class Request:
 
 class Api:
     def __init__(self, api_key, user_agent, delay=1000):
-        self.base_url = "http://www.giantbomb.com/api/"
+        self.base_url = 'http://www.giantbomb.com/api/'
         self.api_key = api_key
         self.user_agent = user_agent
         self.delay = delay
@@ -57,7 +57,7 @@ class Api:
             if not response['status_code'] == 1:
                 raise ApiError('Status code returned not 1')
         except KeyError as e:
-            raise ApiError("JSON error: {}".format(e))
+            raise ApiError('JSON error: {}'.format(e))
 
     @staticmethod
     def trim_attributes(instance):
@@ -305,8 +305,8 @@ class Api:
         page = [] if page is None else page
         url = self.base_url + 'search/'
         res = self.get(url, params={'query': query,
-                                    'resources': ",".join(resource for resource in resources),
-                                    'field_list': ",".join(field for field in field_list),
+                                    'resources': ','.join(resource for resource in resources),
+                                    'field_list': ','.join(field for field in field_list),
                                     'limit': str(limit),
                                     'page': str(page)
                                     })['results']
@@ -388,7 +388,7 @@ class Accessory:
                    data.get('site_detail_url', None),)
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Character:
@@ -469,7 +469,7 @@ class Character:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Chat:
@@ -502,7 +502,7 @@ class Chat:
                    data.get('title', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.channel_name, self.title)
+        return '{} {{{}}}'.format(self.channel_name, self.title)
 
 
 class Company:
@@ -599,7 +599,7 @@ class Company:
                    data.get('website', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Concept:
@@ -671,7 +671,7 @@ class Concept:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Franchise:
@@ -731,7 +731,7 @@ class Franchise:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Game:
@@ -860,7 +860,7 @@ class Game:
                    data.get('videos', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class GameRating:
@@ -887,7 +887,7 @@ class GameRating:
                    data.get('rating_board', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Genre:
@@ -926,7 +926,7 @@ class Genre:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Location:
@@ -971,7 +971,7 @@ class Location:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Object:
@@ -1040,7 +1040,7 @@ class Object:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Person:
@@ -1121,7 +1121,7 @@ class Person:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Platform:
@@ -1178,7 +1178,7 @@ class Platform:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Promo:
@@ -1217,7 +1217,7 @@ class Promo:
                    data.get('user', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class RatingBoard:
@@ -1259,7 +1259,7 @@ class RatingBoard:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Region:
@@ -1301,7 +1301,7 @@ class Region:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Release:
@@ -1400,7 +1400,7 @@ class Release:
                    data.get('widescreen_support', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Review:
@@ -1445,7 +1445,7 @@ class Review:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} Review by {}: {}".format(self.game, self.reviewer, self.score)
+        return '{} Review by {}: {}'.format(self.game, self.reviewer, self.score)
 
 
 class SearchResults:
@@ -1485,16 +1485,19 @@ class SearchResults:
                    data.get('videos', None))
 
     def __repr__(self):
-        return "Games: {}, Franchises: {}, Characters: {}, Concepts: {}, " \
-               "Objects: {}, Locations: {}, People: {}, Companies: {}, Videos: {}".format(len(self.games),
-                                                                                          len(self.franchises),
-                                                                                          len(self.characters),
-                                                                                          len(self.concepts),
-                                                                                          len(self.objects),
-                                                                                          len(self.locations),
-                                                                                          len(self.people),
-                                                                                          len(self.companies),
-                                                                                          len(self.videos))
+        return 'Games: {}, Franchises: {}, ' \
+               'Characters: {}, Concepts: {}, ' \
+               'Objects: {}, Locations: {}, ' \
+               'People: {}, Companies: {}, ' \
+               'Videos: {}'.format(len(self.games),
+                                   len(self.franchises),
+                                   len(self.characters),
+                                   len(self.concepts),
+                                   len(self.objects),
+                                   len(self.locations),
+                                   len(self.people),
+                                   len(self.companies),
+                                   len(self.videos))
 
 
 class Theme:
@@ -1518,7 +1521,7 @@ class Theme:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class Types:
@@ -1539,7 +1542,7 @@ class Types:
                    data.get('list_resource_name', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.list_resource_name, self.id)
+        return '{} {{{}}}'.format(self.list_resource_name, self.id)
 
 
 class UserReview:
@@ -1578,7 +1581,7 @@ class UserReview:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} Review by {}: {}".format(self.game, self.reviewer, self.score)
+        return '{} Review by {}: {}'.format(self.game, self.reviewer, self.score)
 
 
 class Video:
@@ -1635,7 +1638,7 @@ class Video:
                    data.get('youtube_id', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class VideoType:
@@ -1662,7 +1665,7 @@ class VideoType:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class VideoCategory:
@@ -1689,7 +1692,7 @@ class VideoCategory:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
 
 
 class VideoShow:
@@ -1716,4 +1719,4 @@ class VideoShow:
                    data.get('site_detail_url', None))
 
     def __repr__(self):
-        return "{} {{{}}}".format(self.name, self.id)
+        return '{} {{{}}}'.format(self.name, self.id)
