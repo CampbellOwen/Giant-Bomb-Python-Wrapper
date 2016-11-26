@@ -1169,3 +1169,48 @@ class Release:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Review:
+    def __init__(self,
+                 api_detail_url=None,
+                 deck=None,
+                 description=None,
+                 dlc_name=None,
+                 game=None,
+                 platforms=None,
+                 publish_date=None,
+                 release=None,
+                 reviewer=None,
+                 score=None,
+                 site_detail_url=None):
+        self.api_detail_url = api_detail_url
+        self.deck = deck
+        self.description = description
+        self.dlc_name = dlc_name
+        self.game = game
+        self.platforms = platforms
+        self.publish_date = publish_date
+        self.release = release
+        self.reviewer = reviewer
+        self.score = score
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('dlc_name', None),
+                   data.get('game', None),
+                   data.get('platforms', None),
+                   data.get('publish_date', None),
+                   data.get('release', None),
+                   data.get('reviewer', None),
+                   data.get('score', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} Review by {}: {}".format(self.game, self.reviewer, self.score)
