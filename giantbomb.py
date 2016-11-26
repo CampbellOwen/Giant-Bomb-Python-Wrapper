@@ -1399,25 +1399,25 @@ class Review:
 
 class SearchResults:
     def __init__(self,
-                 games=[],
-                 franchises=[],
-                 characters=[],
-                 concepts=[],
-                 objects=[],
-                 locations=[],
-                 people=[],
-                 companies=[],
-                 videos=[]):
+                 games=None,
+                 franchises=None,
+                 characters=None,
+                 concepts=None,
+                 objects=None,
+                 locations=None,
+                 people=None,
+                 companies=None,
+                 videos=None):
 
-        self.games = games
-        self.franchises = franchises
-        self.characters = characters
-        self.concepts = concepts
-        self.objects = objects
-        self.locations = locations
-        self.people = people
-        self.companies = companies
-        self.videos = videos
+        self.games = games if games is not None else []
+        self.franchises = franchises if franchises is not None else []
+        self.characters = characters if characters is not None else []
+        self.concepts = concepts if concepts is not None else []
+        self.objects = objects if objects is not None else []
+        self.locations = locations if locations is not None else []
+        self.people = people if people is not None else []
+        self.companies = companies if companies is not None else []
+        self.videos = videos if videos is not None else []
 
         Api.trim_attributes(self)
 
