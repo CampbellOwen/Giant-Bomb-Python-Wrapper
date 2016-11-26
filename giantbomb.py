@@ -118,6 +118,91 @@ class Api:
         res = self.get(url)['results']
         return GameRating.from_dict(res)
 
+    def get_game_genre(self, id_):
+        url = self.base_url + 'genre/{}'.format(id_)
+        res = self.get(url)['results']
+        return Genre.from_dict(res)
+
+    def get_location(self, id_):
+        url = self.base_url + 'location/{}'.format(id_)
+        res = self.get(url)['results']
+        return Location.from_dict(res)
+
+    def get_object(self, id_):
+        url = self.base_url + 'object/{}'.format(id_)
+        res = self.get(url)['results']
+        return Object.from_dict(res)
+
+    def get_person(self, id_):
+        url = self.base_url + 'person/{}'.format(id_)
+        res = self.get(url)['results']
+        return Person.from_dict(res)
+
+    def get_platform(self, id_):
+        url = self.base_url + 'platform/{}'.format(id_)
+        res = self.get(url)['results']
+        return Platform.from_dict(res)
+
+    def get_promo(self, id_):
+        url = self.base_url + 'promo/{}'.format(id_)
+        res = self.get(url)['results']
+        return Promo.from_dict(res)
+
+    def get_rating_board(self, id_):
+        url = self.base_url + 'rating_board/{}'.format(id_)
+        res = self.get(url)['results']
+        return RatingBoard.from_dict(res)
+
+    def get_region(self, id_):
+        url = self.base_url + 'region/{}'.format(id_)
+        res = self.get(url)['results']
+        return Region.from_dict(res)
+
+    def get_release(self, id_):
+        url = self.base_url + 'release/{}'.format(id_)
+        res = self.get(url)['results']
+        return Release.from_dict(res)
+
+    def get_review(self, id_):
+        url = self.base_url + 'review/{}'.format(id_)
+        res = self.get(url)['results']
+        return Review.from_dict(res)
+
+    def get_theme(self, id_):
+        url = self.base_url + 'theme/{}'.format(id_)
+        res = self.get(url)['results']
+        return Theme.from_dict(res)
+
+    def get_types(self, id_):
+        url = self.base_url + 'types/{}'.format(id_)
+        res = self.get(url)['results']
+        return Types.from_dict(res)
+
+    def get_user_review(self, id_):
+        url = self.base_url + 'user_review/{}'.format(id_)
+        res = self.get(url)['results']
+        return UserReview.from_dict(res)
+
+    def get_video(self, id_):
+        url = self.base_url + 'video/{}'.format(id_)
+        res = self.get(url)['results']
+        return Video.from_dict(res)
+
+    def get_video_type(self, id_):
+        url = self.base_url + 'video_type/{}'.format(id_)
+        res = self.get(url)['results']
+        return VideoType.from_dict(res)
+
+    def get_video_category(self, id_):
+        url = self.base_url + 'video_category/{}'.format(id_)
+        res = self.get(url)['results']
+        return VideoCategory.from_dict(res)
+
+    def get_video_show(self, id_):
+        url = self.base_url + 'video_show/{}'.format(id_)
+        res = self.get(url)['results']
+        return VideoShow.from_dict(res)
+
     def search(self, query, resources=[]):
         url = self.base_url + 'search/'
         res = self.get(url, params={'query': query,
