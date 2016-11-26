@@ -1470,7 +1470,7 @@ class UserReview:
                    data.get('date_last_updated', None),
                    data.get('deck', None),
                    data.get('description', None),
-                   data.get('game', None),
+                   data.get('wikiObject', None),
                    data.get('reviewer', None),
                    data.get('score', None),
                    data.get('site_detail_url', None))
