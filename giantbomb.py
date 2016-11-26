@@ -1238,3 +1238,24 @@ class Theme:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Types:
+    def __init__(self,
+                 detail_resource_name=None,
+                 id_=None,
+                 list_resource_name=None):
+        self.detail_resource_name = detail_resource_name
+        self.id = id_
+        self.list_resource_name = list_resource_name
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('detail_resource_name', None),
+                   data.get('id', None),
+                   data.get('list_resource_name', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.list_resource_name, self.id)
