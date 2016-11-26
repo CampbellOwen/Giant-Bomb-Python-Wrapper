@@ -69,7 +69,8 @@ class Api:
             except TypeError:
                 pass
 
-    def get(self, url, params={}):
+    def get(self, url, params=None):
+        params = {} if params is None else params
         params['api_key'] = self.api_key
         params['format'] = 'json'
         requester = Request(self.delay)
@@ -78,133 +79,171 @@ class Api:
         Api.verify_response(response)
         return response
 
-    def get_accessory(self, id_, field_list=[]):
+    def get_accessory(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'accessory/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Accessory.from_dict(res)
 
-    def get_character(self, id_, field_list=[]):
+    def get_character(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'character/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Character.from_dict(res)
 
-    def get_chat(self, id_, field_list=[]):
+    def get_chat(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'chat/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Chat.from_dict(res)
 
-    def get_company(self, id_, field_list=[]):
+    def get_company(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'company/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Company.from_dict(res)
 
-    def get_concept(self, id_, field_list=[]):
+    def get_concept(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'concept/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Concept.from_dict(res)
 
-    def get_franchise(self, id_, field_list=[]):
+    def get_franchise(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'franchise/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Franchise.from_dict(res)
 
-    def get_game(self, id_, field_list=[]):
+    def get_game(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'game/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Game.from_dict(res)
 
-    def get_game_rating(self, id_, field_list=[]):
+    def get_game_rating(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'game_rating/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return GameRating.from_dict(res)
 
-    def get_genre(self, id_, field_list=[]):
+    def get_genre(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'genre/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Genre.from_dict(res)
 
-    def get_location(self, id_, field_list=[]):
+    def get_location(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'location/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Location.from_dict(res)
 
-    def get_object(self, id_, field_list=[]):
+    def get_object(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'object/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Object.from_dict(res)
 
-    def get_person(self, id_, field_list=[]):
+    def get_person(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'person/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Person.from_dict(res)
 
-    def get_platform(self, id_, field_list=[]):
+    def get_platform(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'platform/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Platform.from_dict(res)
 
-    def get_promo(self, id_, field_list=[]):
+    def get_promo(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'promo/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Promo.from_dict(res)
 
-    def get_rating_board(self, id_, field_list=[]):
+    def get_rating_board(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'rating_board/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return RatingBoard.from_dict(res)
 
-    def get_region(self, id_, field_list=[]):
+    def get_region(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'region/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Region.from_dict(res)
 
-    def get_release(self, id_, field_list=[]):
+    def get_release(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'release/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Release.from_dict(res)
 
-    def get_review(self, id_, field_list=[]):
+    def get_review(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'review/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Review.from_dict(res)
 
-    def get_theme(self, id_, field_list=[]):
+    def get_theme(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'theme/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
@@ -216,42 +255,54 @@ class Api:
         res = self.get(url)['results']
         return Types.from_dict(res)
 
-    def get_user_review(self, id_, field_list=[]):
+    def get_user_review(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'user_review/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return UserReview.from_dict(res)
 
-    def get_video(self, id_, field_list=[]):
+    def get_video(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'video/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return Video.from_dict(res)
 
-    def get_video_type(self, id_, field_list=[]):
+    def get_video_type(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'video_type/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return VideoType.from_dict(res)
 
-    def get_video_category(self, id_, field_list=[]):
+    def get_video_category(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
+
         url = self.base_url + 'video_category/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return VideoCategory.from_dict(res)
 
-    def get_video_show(self, id_, field_list=[]):
+    def get_video_show(self, id_, field_list=None):
+        field_list = [] if field_list is None else field_list
         url = self.base_url + 'video_show/{}'.format(id_)
         res = self.get(url, params={
             'field_list': ','.join(field for field in field_list)
         })['results']
         return VideoShow.from_dict(res)
 
-    def search(self, query, resources=[], field_list=[], limit=10, page=[]):
+    def search(self, query, resources=None, field_list=None, limit=10, page=None):
+        resources = [] if resources is None else resources
+        field_list = [] if field_list is None else field_list
+        page = [] if page is None else page
         url = self.base_url + 'search/'
         res = self.get(url, params={'query': query,
                                     'resources': ",".join(resource for resource in resources),
