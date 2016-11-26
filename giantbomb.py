@@ -206,7 +206,8 @@ class Api:
     def search(self, query, resources=[]):
         url = self.base_url + 'search/'
         res = self.get(url, params={'query': query,
-                                    'resources': ",".join(resource for resource in resources)})['results']
+                                    'resources': ",".join(resource for resource in resources)
+                                    })['results']
         games = []
         franchises = []
         characters = []
