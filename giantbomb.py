@@ -1028,3 +1028,45 @@ class RatingBoard:
 
     def __repr__(self):
         return "{} {{{}}}".format(self.name, self.id)
+
+
+class Region:
+    def __init__(self,
+                 api_detail_url=None,
+                 date_added=None,
+                 date_last_updated=None,
+                 deck=None,
+                 description=None,
+                 id_=None,
+                 image=None,
+                 name=None,
+                 rating_boards=None,
+                 site_detail_url=None):
+        self.api_detail_url = api_detail_url
+        self.date_added = date_added
+        self.date_last_updated = date_last_updated
+        self.deck = deck
+        self.description = description
+        self.id = id_
+        self.image = image
+        self.name = name
+        self.rating_boards = rating_boards
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('date_added', None),
+                   data.get('date_last_updated', None),
+                   data.get('deck', None),
+                   data.get('description', None),
+                   data.get('id', None),
+                   data.get('image', None),
+                   data.get('name', None),
+                   data.get('rating_boards', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
