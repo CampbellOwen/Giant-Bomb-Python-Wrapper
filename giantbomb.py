@@ -1214,3 +1214,27 @@ class Review:
 
     def __repr__(self):
         return "{} Review by {}: {}".format(self.game, self.reviewer, self.score)
+
+
+class Theme:
+    def __init__(self,
+                 api_detail_url=None,
+                 id_=None,
+                 name=None,
+                 site_detail_url=None):
+        self.api_detail_url = api_detail_url
+        self.id = id_
+        self.name = name
+        self.site_detail_url = site_detail_url
+
+        Api.trim_attributes(self)
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(data.get('api_detail_url', None),
+                   data.get('id', None),
+                   data.get('name', None),
+                   data.get('site_detail_url', None))
+
+    def __repr__(self):
+        return "{} {{{}}}".format(self.name, self.id)
