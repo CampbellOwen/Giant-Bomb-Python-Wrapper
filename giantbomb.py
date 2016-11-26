@@ -29,7 +29,7 @@ class Request:
             try:
                 res_json = res.json()
             except ValueError:
-                raise ApiError("Check your url")
+                raise ApiError("URL provided returned invalid results:\nurl: {}\nparams: {}".format(url, params))
             return res_json
 
     instance = None
@@ -117,6 +117,50 @@ class Api:
         url = self.base_url + 'game_rating/{}'.format(id_)
         res = self.get(url)['results']
         return GameRating.from_dict(res)
+
+    def search(self, query, resources=[]):
+        url = self.base_url + 'search/'
+        res = self.get(url, params={'query': query,
+                                    'resources': ",".join(resource for resource in resources)})['results']
+        games = []
+        franchises = []
+        characters = []
+        concepts = []
+        objects = []
+        locations = []
+        people = []
+        companies = []
+        videos = []
+
+        for result in res:
+            if result['resource_type'] == 'game':
+                games.append(Game.from_dict(result))
+            elif result['resource_type'] == 'franchise':
+                franchises.append(Franchise.from_dict(result))
+            elif result['resource_type'] == 'character':
+                characters.append(Character.from_dict(result))
+            elif result['resource_type'] == 'concept':
+                concepts.append(Concept.from_dict(result))
+            elif result['resource_type'] == 'object':
+                objects.append(Object.from_dict(result))
+            elif result['resource_type'] == 'location':
+                locations.append(Location.from_dict(result))
+            elif result['resource_type'] == 'person':
+                people.append(Person.from_dict(result))
+            elif result['resource_type'] == 'company':
+                companies.append(Company.from_dict(result))
+            elif result['resource_type'] == 'video':
+                videos.append(Video.from_dict(result))
+
+        return SearchResults(games=games,
+                             franchises=franchises,
+                             characters=characters,
+                             concepts=concepts,
+                             objects=objects,
+                             locations=locations,
+                             people=people,
+                             companies=companies,
+                             videos=videos)
 
 
 class Accessory:
